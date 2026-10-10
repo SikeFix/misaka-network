@@ -54,3 +54,16 @@ location / {
   try_files $uri $uri/ /index.html;
 }
 ```
+
+### GitHub Pages（已配置）
+
+推送到 `main` 分支后，[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) 会自动构建并发布到
+<https://sikefix.github.io/misaka-network/>。也可以在仓库 Actions 页手动触发。
+
+切换到自定义域名 `misaka-network.top`：
+
+1. 新建 `public/CNAME`，内容为 `misaka-network.top`，提交推送
+2. 仓库 Settings → Pages → Custom domain 填写 `misaka-network.top`，勾选 Enforce HTTPS
+3. DNS 将 `misaka-network.top` 的 A 记录指向 `185.199.108.153`、`185.199.109.153`、`185.199.110.153`、`185.199.111.153`
+
+绑定域名后 base 路径会自动变回 `/`，无需改代码。
